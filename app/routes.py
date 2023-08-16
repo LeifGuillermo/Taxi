@@ -2,6 +2,15 @@ from flask import render_template, request, redirect, url_for, flash
 from app import app
 
 
+app.config.from_pyfile("../secrets.cfg")
+print(app.config)
+
+
+@app.route("/index", methods=["GET"])
+def index():
+    return render_template("index.html")
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
