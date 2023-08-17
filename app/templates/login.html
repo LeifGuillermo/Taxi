@@ -1,20 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
-    <h2>Login</h2>
-    <form action="/login" method="post">
-        <label for="email">Email:</label>
-        <input type="email" name="email" required><br><br>
+{% extends "base.html" %}
 
-        <label for="password">Password:</label>
-        <input type="password" name="password" required><br><br>
-
-        <input type="submit" value="Login">
+{% block content %}
+    <h2>Log In</h2>
+    <form action="{{ url_for('login') }}" method="post">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(size=32) }}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}
+        </p>
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>{{ form.submit() }}</p>
     </form>
-</body>
-</html>
+{% endblock %}

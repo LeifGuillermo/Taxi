@@ -1,3 +1,6 @@
+# Do not change order of statements in this file.
+# Some lines depend on other lines.
+
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -8,9 +11,9 @@ app.config.from_object("config")
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
+from app.models import *
 
-class TaxiRide(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    pickup_location = db.Column(db.String(128))
-    dropoff_location = db.Column(db.String(128))
-    fare = db.Column(db.Float)
+from flask_login import LoginManager
+
+login_manager = LoginManager()
+login_manager.init_app(app)

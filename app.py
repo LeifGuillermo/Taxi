@@ -1,12 +1,9 @@
-from flask import render_template
-from app import app
+import logging
+from app.views.routes import *
+from app.views.users import *
 
-from app.routes import register, login
-
-
-@app.route("/")
-def hello_world():
-    return render_template("hello.html")
+logging.basicConfig(level=logging.DEBUG)
+app.config.from_pyfile("../secrets.cfg")
 
 
 if __name__ == "__main__":

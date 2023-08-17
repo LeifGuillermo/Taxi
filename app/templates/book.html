@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+    <h2>Book a Taxi</h2>
+    <form action="{{url_for('book')}}" method="post">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.pickup_location.label }} <br>
+            {{ form.pickup_location(size=32) }}
+        </div>
+        <div>
+            {{ form.dropoff_location.label }} <br>
+            {{ form.dropoff_location(size=32) }}
+        </div>
+        <div>
+            {{ form.pickup_time.label }} <br>
+            {{ form.pickup_time() }}
+        </div>
+        <div>
+            {{ form.submit() }}
+        </div>
+    </form>
+{% endblock %}
